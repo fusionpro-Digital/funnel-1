@@ -80,6 +80,7 @@ export const problems = {
   ],
   closing:
     "You don’t need another report explaining these problems. You need a partner who can fix them.",
+  cta: "Build My Growth System",
 };
 
 export type Service = {

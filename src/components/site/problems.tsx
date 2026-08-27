@@ -2,13 +2,14 @@ import { X } from "lucide-react";
 
 import {
   Container,
+  CtaButton,
   DisplayHeading,
   Eyebrow,
   Lede,
   Section,
 } from "@/components/site/primitives";
 import { Reveal } from "@/components/site/reveal";
-import { problems } from "@/content/site";
+import { CTA_HREF, problems } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 function ProblemCard({
@@ -81,10 +82,14 @@ export function Problems() {
           </ProblemCard>
         </ul>
 
-        <Reveal delay={120}>
+        <Reveal delay={120} className="flex flex-col items-center">
           <p className="mx-auto mt-10 max-w-[1000px] text-balance text-center text-[16px] font-semibold text-white sm:mt-12 sm:text-[20px]">
             {problems.closing}
           </p>
+
+          <div className="mt-8 sm:mt-10">
+            <CtaButton href={CTA_HREF}>{problems.cta}</CtaButton>
+          </div>
         </Reveal>
       </Container>
     </Section>
