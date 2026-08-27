@@ -1,26 +1,190 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* FusionPro palette */
+  --color-ink: #050109;
+  --color-ink-raised: #0a0413;
+  --color-violet-50: #f3edff;
+  --color-violet-300: #b794ff;
+  --color-violet-400: #a855f7;
+  --color-violet-500: #8b5cf6;
+  --color-violet-600: #7c3aed;
+  --color-violet-700: #6d28d9;
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-input: var(--input);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+
+  --animate-marquee: marquee var(--marquee-duration, 60s) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--marquee-duration, 60s) linear infinite;
+
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translate3d(-50%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+ * The site is dark-only by design — the Figma has no light variant.
+ * Tokens are declared on :root so nothing depends on a `.dark` class
+ * being present, and no media query can flip them.
+ */
+:root {
+  --radius: 0.75rem;
+
+  --background: #050109;
+  --foreground: #ffffff;
+
+  --card: rgba(255, 255, 255, 0.025);
+  --card-foreground: #ffffff;
+
+  --popover: #0d0616;
+  --popover-foreground: #ffffff;
+
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+
+  --secondary: rgba(255, 255, 255, 0.06);
+  --secondary-foreground: #ffffff;
+
+  --muted: rgba(255, 255, 255, 0.05);
+  --muted-foreground: #9d9aa8;
+
+  --accent: rgba(139, 92, 246, 0.12);
+  --accent-foreground: #ffffff;
+
+  --destructive: #ef4444;
+
+  --border: rgba(139, 92, 246, 0.16);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: rgba(139, 92, 246, 0.55);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Faint violet wash pinned behind the whole page, matching the
+       purple-tinted black in the comps rather than a flat #000. */
+    background-image:
+      radial-gradient(120% 60% at 50% -10%, rgba(124, 58, 237, 0.16), transparent 60%),
+      radial-gradient(90% 50% at 50% 100%, rgba(109, 40, 217, 0.12), transparent 65%);
+    background-attachment: fixed;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.35);
+  }
+}
+
+@layer utilities {
+  /* Purple gradient used on every italic display line. */
+  .text-gradient-violet {
+    background-image: linear-gradient(
+      95deg,
+      #6d28d9 0%,
+      #8b5cf6 30%,
+      #a855f7 55%,
+      #7c3aed 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Descenders on the italic serif get clipped without this. */
+    padding-bottom: 0.12em;
+  }
+
+  /* Hairline divider that fades out at both ends, as in the comps. */
+  .rule-fade {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(139, 92, 246, 0.35),
+      transparent
+    );
+  }
+}
+
+/*
+ * Scroll-reveal, driven entirely by CSS so no state or inline script is
+ * needed and there is no flash of visible-then-hidden content on load.
+ * <Reveal> renders data-reveal="pending" and flips it to "visible" when the
+ * element intersects the viewport. The <noscript> override in the root
+ * layout un-hides everything when JS is unavailable.
+ */
+.reveal {
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-reveal="visible"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Show everything outright rather than snapping it in on scroll. */
+  [data-reveal="pending"] {
+    opacity: 1;
+    transform: none;
+  }
 }
