@@ -1,6 +1,12 @@
-import { Container, Section } from "@/components/site/primitives";
+import {
+  Container,
+  DisplayHeading,
+  Eyebrow,
+  Lede,
+  Section,
+} from "@/components/site/primitives";
 import { Reveal } from "@/components/site/reveal";
-import { type Testimonial, testimonials } from "@/content/site";
+import { type Testimonial, testimonials, videoTestimonials } from "@/content/site";
 
 function initials(name: string) {
   return name
@@ -53,6 +59,23 @@ export function Testimonials() {
   return (
     <Section aria-label="Client testimonials">
       <Container>
+        <div className="mb-12 flex flex-col items-center text-center sm:mb-16">
+          <Reveal>
+            <Eyebrow>{videoTestimonials.eyebrow}</Eyebrow>
+          </Reveal>
+
+          <Reveal delay={80} className="mt-7">
+            <DisplayHeading
+              lead={videoTestimonials.headline}
+              accent={videoTestimonials.headlineAccent}
+            />
+          </Reveal>
+
+          <Reveal delay={140} className="mt-6 max-w-[1180px]">
+            <Lede>{videoTestimonials.body}</Lede>
+          </Reveal>
+        </div>
+
         {/* CSS multi-column gives the staggered masonry from the comps
             without measuring heights in JS. */}
         <div className="columns-1 gap-5 sm:columns-2 lg:columns-4">

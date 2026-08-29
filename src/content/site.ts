@@ -7,7 +7,7 @@
 export const CTA_HREF = "/contact";
 
 export const hero = {
-  eyebrow: "Done-for-you growth systems for Canadian B2B & B2C companies",
+  eyebrow: "Done-for-you growth systems for B2B & B2C companies",
   headline: "Turn More Interest Into",
   headlineAccent: "Qualified Sales Conversations.",
   body: [
@@ -31,23 +31,19 @@ export type GalleryItem = {
   tint: string;
 };
 
-export const galleryRowOne: GalleryItem[] = [
-  { id: "radical-toast", label: "Radical Toast - packaging", src: "/slider-image/Rectangle 41.png", tint: "from-violet-600 to-violet-300" },
-  { id: "ekspo", label: "Ekspo Kucing - outdoor campaign", src: "/slider-image/Rectangle 41 (Colorized).png", tint: "from-slate-600 to-slate-800" },
-  { id: "constro", label: "Constro - construction web platform", src: "/slider-image/Rectangle 42.png", tint: "from-orange-500 to-teal-600" },
-  { id: "doordash", label: "DoorDash - delivery lifestyle", src: "/slider-image/Rectangle 42 (1).png", tint: "from-rose-500 to-emerald-800" },
-  { id: "glassware", label: "Glassware - product render", src: "/slider-image/Rectangle 43.png", tint: "from-violet-500 to-fuchsia-700" },
-  { id: "cafe-fugaz", label: "Cafe Fugaz - brand identity", src: "/slider-image/Rectangle 43 (1).png", tint: "from-violet-700 to-indigo-400" },
+export const galleryItems: GalleryItem[] = [
+  { id: "travel", label: "Private Luxury & Tailor-Made Experiences", src: "/slider-image/Rectangle 41.png", tint: "from-teal-600 to-emerald-900" },
+  { id: "plumbing", label: "Professional Plumbing Services", src: "/slider-image/Rectangle 41 (Colorized).png", tint: "from-amber-600 to-slate-900" },
+  { id: "building", label: "Modern Building Solutions", src: "/slider-image/Rectangle 42.png", tint: "from-blue-600 to-indigo-900" },
+  { id: "allpoints", label: "AllPoints Construction, Inc.", src: "/slider-image/Rectangle 42 (1).png", tint: "from-purple-600 to-slate-900" },
+  { id: "zone-ac", label: "Z-ONE AC Service - Stay Cool Today", src: "/slider-image/Rectangle 43.png", tint: "from-cyan-600 to-blue-900" },
+  { id: "radical-toast", label: "Radical Toast Packaging", src: "/slider-image/Rectangle 43 (1).png", tint: "from-rose-600 to-violet-900" },
+  { id: "pet-site", label: "Find The Right Pet For You", src: "/slider-image/Rectangle 44 (Colorized).png", tint: "from-sky-500 to-blue-800" },
+  { id: "auto-parts", label: "Auto Parts Dubai", src: "/slider-image/Rectangle 44 (Colorized) (1).png", tint: "from-red-600 to-zinc-900" },
 ];
 
-export const galleryRowTwo: GalleryItem[] = [
-  { id: "apparel", label: "Apparel - lookbook", src: "/slider-image/Rectangle 44 (Colorized).png", tint: "from-zinc-600 to-zinc-900" },
-  { id: "stationery", label: "Stationery - print collateral", src: "/slider-image/Rectangle 44 (Colorized) (1).png", tint: "from-sky-300 to-blue-700" },
-  { id: "retail", label: "Retail - storefront campaign", src: "/slider-image/c358c0ec15357e08fa4d3de792ccdb494d323795.jpg", tint: "from-amber-500 to-rose-700" },
-  { id: "signage", label: "Signage - environmental design", src: "/slider-image/fabc88830308f9b587eca108295e487b964ad2d5.png", tint: "from-violet-500 to-purple-900" },
-  { id: "editorial", label: "Editorial - content system", src: "/slider-image/Rectangle 41.png", tint: "from-emerald-500 to-teal-900" },
-  { id: "packaging", label: "Packaging - CPG line", src: "/slider-image/Rectangle 42.png", tint: "from-fuchsia-500 to-violet-800" },
-];
+export const galleryRowOne: GalleryItem[] = galleryItems;
+export const galleryRowTwo: GalleryItem[] = galleryItems;
 
 export const oneTeam = {
   headline: "One team behind every",
@@ -100,8 +96,8 @@ export const services = {
   items: [
     {
       id: "positioning",
-      title: "Positioning &",
-      titleAccent: "Messaging:",
+      title: "Logo &",
+      titleAccent: "Branding:",
       body: "Clarify your market, positioning, and message so the people most likely to buy recognize themselves immediately.",
       src: "/system-design-card-image/Rectangle 47.png",
       tint: "from-orange-500/70 to-violet-700/70",
