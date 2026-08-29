@@ -8,7 +8,6 @@ import { OneTeam } from "@/components/site/one-team";
 import { Problems } from "@/components/site/problems";
 import { Services } from "@/components/site/services";
 import { Testimonials } from "@/components/site/testimonials";
-import { VideoTestimonials } from "@/components/site/video-testimonials";
 
 export default function HomePage() {
   return (
@@ -20,7 +19,6 @@ export default function HomePage() {
         <OneTeam />
         <Problems />
         <Services />
-        <VideoTestimonials />
         <Testimonials />
         <Faq />
         <FinalCta />

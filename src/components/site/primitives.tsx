@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import type * as React from "react";
 import { ArrowRight } from "lucide-react";
 
@@ -114,6 +116,33 @@ export function CtaButton({
   children: React.ReactNode;
   className?: string;
 }) {
+  const isInternal = href.startsWith("/");
+
+  if (isInternal) {
+    return (
+      <Link
+        href={href}
+        className={cn(
+          "group inline-flex items-center gap-3 rounded-full px-7 py-4 sm:px-9 sm:py-[18px]",
+          "bg-[linear-gradient(100deg,#7c3aed_0%,#8b5cf6_50%,#7c3aed_100%)]",
+          "text-[15px] font-semibold text-white sm:text-[17px]",
+          "shadow-[0_10px_40px_-10px_rgba(124,58,237,0.85)]",
+          "transition-[transform,box-shadow,filter] duration-300 ease-out",
+          "hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_16px_50px_-10px_rgba(139,92,246,0.95)]",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          "active:translate-y-0",
+          className,
+        )}
+      >
+        {children}
+        <ArrowRight
+          aria-hidden
+          className="size-[18px] transition-transform duration-300 ease-out group-hover:translate-x-1"
+        />
+      </Link>
+    );
+  }
+
   return (
     <a
       href={href}
@@ -145,28 +174,30 @@ export function Rule({ className }: { className?: string }) {
 
 export function Logo({ className }: { className?: string }) {
   return (
-    <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <LogoMark className="size-7 shrink-0 sm:size-8" />
-      <span className="font-sans text-[22px] font-semibold tracking-[-0.02em] text-white sm:text-[26px]">
+    <span
+      className={cn(
+        "group/logo relative inline-flex items-center gap-3 transition-transform duration-300 ease-out hover:scale-[1.03]",
+        className,
+      )}
+    >
+      <LogoMark className="relative size-8 shrink-0 transition-transform duration-300 group-hover/logo:rotate-6 sm:size-9" />
+      <span className="font-sans text-[22px] font-bold tracking-[-0.02em] text-white transition-colors duration-300 group-hover/logo:text-violet-300 sm:text-[26px]">
         FusionPro
       </span>
     </span>
   );
 }
 
-/** Three offset rounded bars forming a stylised "F". */
+/** The official FusionPro logomark image. */
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 32 32"
-      fill="none"
-      aria-hidden
-      className={className}
-      role="presentation"
-    >
-      <rect x="9" y="3" width="20" height="7" rx="3.5" fill="#8b5cf6" />
-      <rect x="5" y="12.5" width="20" height="7" rx="3.5" fill="#7c3aed" />
-      <rect x="9" y="22" width="14" height="7" rx="3.5" fill="#6d28d9" />
-    </svg>
+    <Image
+      src="/Logomark.png"
+      alt="FusionPro Logomark"
+      width={40}
+      height={40}
+      className={cn("object-contain transition-transform duration-300", className)}
+      priority
+    />
   );
 }

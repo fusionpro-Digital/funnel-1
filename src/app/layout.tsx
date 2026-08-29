@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import Script from "next/script";
+import { ScrollToTopOnReload } from "@/components/site/scroll-to-top";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -37,6 +39,11 @@ export const metadata: Metadata = {
     "sales funnels",
     "Canadian marketing agency",
   ],
+  icons: {
+    icon: "/Logomark.png",
+    shortcut: "/Logomark.png",
+    apple: "/Logomark.png",
+  },
   openGraph: {
     type: "website",
     url: SITE_URL,
@@ -60,6 +67,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col overflow-x-hidden font-sans">
+        <Script
+          id="scroll-restoration"
+          dangerouslySetInnerHTML={{
+            __html: `if('scrollRestoration' in history){history.scrollRestoration='manual'}window.scrollTo(0,0);`,
+          }}
+        />
+        <ScrollToTopOnReload />
         {/* Scroll-reveal starts hidden and is un-hidden by IntersectionObserver.
             Without JS that observer never runs, so opt out of hiding entirely. */}
         <noscript>

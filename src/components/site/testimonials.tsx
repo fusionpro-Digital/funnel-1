@@ -51,7 +51,7 @@ function TestimonialCard({ item }: { item: Testimonial }) {
 
 export function Testimonials() {
   return (
-    <Section aria-label="Client testimonials" className="pt-0 sm:pt-0">
+    <Section aria-label="Client testimonials">
       <Container>
         {/* CSS multi-column gives the staggered masonry from the comps
             without measuring heights in JS. */}

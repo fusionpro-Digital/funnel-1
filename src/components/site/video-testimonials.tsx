@@ -110,6 +110,10 @@ function VideoCard({
 }
 
 export function VideoTestimonials() {
+  if (!videoTestimonials.items || videoTestimonials.items.length === 0) {
+    return null;
+  }
+
   return (
     <Section id="results">
       <Container>

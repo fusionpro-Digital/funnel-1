@@ -4,7 +4,7 @@
  * edits never require touching layout.
  */
 
-export const CTA_HREF = "https://cal.com/fusionpro/20min";
+export const CTA_HREF = "/contact";
 
 export const hero = {
   eyebrow: "Done-for-you growth systems for Canadian B2B & B2C companies",
@@ -32,21 +32,21 @@ export type GalleryItem = {
 };
 
 export const galleryRowOne: GalleryItem[] = [
-  { id: "radical-toast", label: "Radical Toast - packaging", src: null, tint: "from-violet-600 to-violet-300" },
-  { id: "ekspo", label: "Ekspo Kucing - outdoor campaign", src: null, tint: "from-slate-600 to-slate-800" },
-  { id: "constro", label: "Constro - construction web platform", src: null, tint: "from-orange-500 to-teal-600" },
-  { id: "doordash", label: "DoorDash - delivery lifestyle", src: null, tint: "from-rose-500 to-emerald-800" },
-  { id: "glassware", label: "Glassware - product render", src: null, tint: "from-violet-500 to-fuchsia-700" },
-  { id: "cafe-fugaz", label: "Cafe Fugaz - brand identity", src: null, tint: "from-violet-700 to-indigo-400" },
+  { id: "radical-toast", label: "Radical Toast - packaging", src: "/slider-image/Rectangle 41.png", tint: "from-violet-600 to-violet-300" },
+  { id: "ekspo", label: "Ekspo Kucing - outdoor campaign", src: "/slider-image/Rectangle 41 (Colorized).png", tint: "from-slate-600 to-slate-800" },
+  { id: "constro", label: "Constro - construction web platform", src: "/slider-image/Rectangle 42.png", tint: "from-orange-500 to-teal-600" },
+  { id: "doordash", label: "DoorDash - delivery lifestyle", src: "/slider-image/Rectangle 42 (1).png", tint: "from-rose-500 to-emerald-800" },
+  { id: "glassware", label: "Glassware - product render", src: "/slider-image/Rectangle 43.png", tint: "from-violet-500 to-fuchsia-700" },
+  { id: "cafe-fugaz", label: "Cafe Fugaz - brand identity", src: "/slider-image/Rectangle 43 (1).png", tint: "from-violet-700 to-indigo-400" },
 ];
 
 export const galleryRowTwo: GalleryItem[] = [
-  { id: "apparel", label: "Apparel - lookbook", src: null, tint: "from-zinc-600 to-zinc-900" },
-  { id: "stationery", label: "Stationery - print collateral", src: null, tint: "from-sky-300 to-blue-700" },
-  { id: "retail", label: "Retail - storefront campaign", src: null, tint: "from-amber-500 to-rose-700" },
-  { id: "signage", label: "Signage - environmental design", src: null, tint: "from-violet-500 to-purple-900" },
-  { id: "editorial", label: "Editorial - content system", src: null, tint: "from-emerald-500 to-teal-900" },
-  { id: "packaging", label: "Packaging - CPG line", src: null, tint: "from-fuchsia-500 to-violet-800" },
+  { id: "apparel", label: "Apparel - lookbook", src: "/slider-image/Rectangle 44 (Colorized).png", tint: "from-zinc-600 to-zinc-900" },
+  { id: "stationery", label: "Stationery - print collateral", src: "/slider-image/Rectangle 44 (Colorized) (1).png", tint: "from-sky-300 to-blue-700" },
+  { id: "retail", label: "Retail - storefront campaign", src: "/slider-image/c358c0ec15357e08fa4d3de792ccdb494d323795.jpg", tint: "from-amber-500 to-rose-700" },
+  { id: "signage", label: "Signage - environmental design", src: "/slider-image/fabc88830308f9b587eca108295e487b964ad2d5.png", tint: "from-violet-500 to-purple-900" },
+  { id: "editorial", label: "Editorial - content system", src: "/slider-image/Rectangle 41.png", tint: "from-emerald-500 to-teal-900" },
+  { id: "packaging", label: "Packaging - CPG line", src: "/slider-image/Rectangle 42.png", tint: "from-fuchsia-500 to-violet-800" },
 ];
 
 export const oneTeam = {
@@ -59,11 +59,11 @@ export const oneTeam = {
 export type ClientLogo = { id: string; name: string; src: string | null };
 
 export const clientLogos: ClientLogo[] = [
-  { id: "south-america-360", name: "South America 360°", src: null },
-  { id: "tino", name: "Tino", src: null },
-  { id: "zfood", name: "ZFood", src: null },
-  { id: "allpoints", name: "AllPoints Construction, Inc.", src: null },
-  { id: "plug-furniture", name: "Plug Furniture", src: null },
+  { id: "south-america-360", name: "South America 360°", src: "/brand-logo/div.framer-evpKx.png" },
+  { id: "tino", name: "Tino", src: "/brand-logo/div.framer-evpKx (1).png" },
+  { id: "zfood", name: "ZFood", src: "/brand-logo/div.framer-evpKx (2).png" },
+  { id: "allpoints", name: "AllPoints Construction, Inc.", src: "/brand-logo/div.framer-evpKx (3).png" },
+  { id: "plug-furniture", name: "Plug Furniture", src: "/brand-logo/div.framer-evpKx (4).png" },
 ];
 
 export const problems = {
@@ -103,7 +103,7 @@ export const services = {
       title: "Positioning &",
       titleAccent: "Messaging:",
       body: "Clarify your market, positioning, and message so the people most likely to buy recognize themselves immediately.",
-      src: null,
+      src: "/system-design-card-image/Rectangle 47.png",
       tint: "from-orange-500/70 to-violet-700/70",
     },
     {
@@ -111,7 +111,7 @@ export const services = {
       title: "Websites &",
       titleAccent: "Landing Pages:",
       body: "Build pages, offers, and experiences that answer the buyer’s real questions and give them a convincing reason to take the next step.",
-      src: null,
+      src: "/system-design-card-image/Rectangle 47 (1).png",
       tint: "from-sky-500/70 to-indigo-800/70",
     },
     {
@@ -119,7 +119,7 @@ export const services = {
       title: "Sales",
       titleAccent: "Funnels:",
       body: "Map the path from first interest to booked conversation, then remove the friction that quietly costs you opportunities.",
-      src: null,
+      src: "/system-design-card-image/Rectangle 47 (2).png",
       tint: "from-emerald-500/70 to-teal-900/70",
     },
     {
@@ -127,7 +127,7 @@ export const services = {
       title: "CRM &",
       titleAccent: "Lead Management:",
       body: "Give your sales team one clear view of who to contact, what was said, and what happens next.",
-      src: null,
+      src: "/system-design-card-image/Rectangle 47 (3).png",
       tint: "from-amber-500/70 to-rose-800/70",
     },
     {
@@ -135,7 +135,7 @@ export const services = {
       title: "Automated",
       titleAccent: "Follow-Up:",
       body: "Connect activity to pipeline, identify the steps costing you opportunities, and improve the system using evidence—not assumptions.",
-      src: null,
+      src: "/system-design-card-image/Rectangle 47 (4).png",
       tint: "from-zinc-500/70 to-zinc-900/70",
     },
     {
@@ -143,7 +143,7 @@ export const services = {
       title: "AI-Powered",
       titleAccent: "Sales Support:",
       body: "Connect activity to pipeline, identify the steps costing you opportunities, and improve the system using evidence—not assumptions.",
-      src: null,
+      src: "/system-design-card-image/Rectangle 48.png",
       tint: "from-orange-400/70 to-purple-900/70",
     },
   ] satisfies Service[],
@@ -171,40 +171,7 @@ export const videoTestimonials = {
   headline: "Results that show up in the pipeline",
   headlineAccent: "not just the portfolio.",
   body: "Good design matters, but it is not the finish line. We measure the outcomes that affect growth: qualified conversion rates, response time, booked conversations, sales velocity, pipeline visibility, and revenue opportunity.",
-  items: [
-    {
-      id: "v1",
-      quote:
-        "“We’ve been scaling every single week and increasing ROAS. Everything has been profitable for us”",
-      poster: null,
-      videoSrc: null,
-      tint: "from-emerald-700/60 to-zinc-900",
-    },
-    {
-      id: "v2",
-      quote:
-        "“They are able to craft amazing strategy for a good content in other to reach the target audience”",
-      poster: null,
-      videoSrc: null,
-      tint: "from-green-700/60 to-zinc-900",
-    },
-    {
-      id: "v3",
-      quote:
-        "“They are an agency that really cares about your performance and success and I highly recommend them”",
-      poster: null,
-      videoSrc: null,
-      tint: "from-sky-700/60 to-zinc-900",
-    },
-    {
-      id: "v4",
-      quote:
-        "“They take the time to really understand your brand, your goals and what is at stake”",
-      poster: null,
-      videoSrc: null,
-      tint: "from-amber-700/60 to-zinc-900",
-    },
-  ] satisfies VideoTestimonial[],
+  items: [] as VideoTestimonial[],
 };
 
 export type Testimonial = {
