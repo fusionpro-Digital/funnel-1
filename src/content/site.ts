@@ -32,14 +32,14 @@ export type GalleryItem = {
 };
 
 export const galleryItems: GalleryItem[] = [
-  { id: "travel", label: "Private Luxury & Tailor-Made Experiences", src: "/slider-image/Rectangle 41.png", tint: "from-teal-600 to-emerald-900" },
-  { id: "plumbing", label: "Professional Plumbing Services", src: "/slider-image/Rectangle 41 (Colorized).png", tint: "from-amber-600 to-slate-900" },
-  { id: "building", label: "Modern Building Solutions", src: "/slider-image/Rectangle 42.png", tint: "from-blue-600 to-indigo-900" },
-  { id: "allpoints", label: "AllPoints Construction, Inc.", src: "/slider-image/Rectangle 42 (1).png", tint: "from-purple-600 to-slate-900" },
-  { id: "zone-ac", label: "Z-ONE AC Service - Stay Cool Today", src: "/slider-image/Rectangle 43.png", tint: "from-cyan-600 to-blue-900" },
-  { id: "radical-toast", label: "Radical Toast Packaging", src: "/slider-image/Rectangle 43 (1).png", tint: "from-rose-600 to-violet-900" },
-  { id: "pet-site", label: "Find The Right Pet For You", src: "/slider-image/Rectangle 44 (Colorized).png", tint: "from-sky-500 to-blue-800" },
-  { id: "auto-parts", label: "Auto Parts Dubai", src: "/slider-image/Rectangle 44 (Colorized) (1).png", tint: "from-red-600 to-zinc-900" },
+  { id: "travel", label: "Private Luxury & Tailor-Made Experiences", src: "/slider-image/Rectangle 41.jpg", tint: "from-teal-600 to-emerald-900" },
+  { id: "plumbing", label: "Professional Plumbing Services", src: "/slider-image/Rectangle 41 (Colorized).jpg", tint: "from-amber-600 to-slate-900" },
+  { id: "building", label: "Modern Building Solutions", src: "/slider-image/Rectangle 42.jpg", tint: "from-blue-600 to-indigo-900" },
+  { id: "allpoints", label: "AllPoints Construction, Inc.", src: "/slider-image/Rectangle 42 (1).jpg", tint: "from-purple-600 to-slate-900" },
+  { id: "zone-ac", label: "Z-ONE AC Service - Stay Cool Today", src: "/slider-image/Rectangle 43.jpg", tint: "from-cyan-600 to-blue-900" },
+  { id: "radical-toast", label: "Radical Toast Packaging", src: "/slider-image/Rectangle 43 (1).jpg", tint: "from-rose-600 to-violet-900" },
+  { id: "pet-site", label: "Find The Right Pet For You", src: "/slider-image/Rectangle 44 (Colorized).jpg", tint: "from-sky-500 to-blue-800" },
+  { id: "auto-parts", label: "Auto Parts Dubai", src: "/slider-image/Rectangle 44 (Colorized) (1).jpg", tint: "from-red-600 to-zinc-900" },
 ];
 
 export const galleryRowOne: GalleryItem[] = galleryItems;
@@ -99,7 +99,7 @@ export const services = {
       title: "Logo &",
       titleAccent: "Branding:",
       body: "Clarify your market, positioning, and message so the people most likely to buy recognize themselves immediately.",
-      src: "/system-design-card-image/Rectangle 47.png",
+      src: "/system-design-card-image/Rectangle 47.jpg",
       tint: "from-orange-500/70 to-violet-700/70",
     },
     {
@@ -107,7 +107,7 @@ export const services = {
       title: "Websites &",
       titleAccent: "Landing Pages:",
       body: "Build pages, offers, and experiences that answer the buyer’s real questions and give them a convincing reason to take the next step.",
-      src: "/system-design-card-image/Rectangle 47 (1).png",
+      src: "/system-design-card-image/Rectangle 47 (1).jpg",
       tint: "from-sky-500/70 to-indigo-800/70",
     },
     {
@@ -115,7 +115,7 @@ export const services = {
       title: "Sales",
       titleAccent: "Funnels:",
       body: "Map the path from first interest to booked conversation, then remove the friction that quietly costs you opportunities.",
-      src: "/system-design-card-image/Rectangle 47 (2).png",
+      src: "/system-design-card-image/Rectangle 47 (2).jpg",
       tint: "from-emerald-500/70 to-teal-900/70",
     },
     {
@@ -123,7 +123,7 @@ export const services = {
       title: "CRM &",
       titleAccent: "Lead Management:",
       body: "Give your sales team one clear view of who to contact, what was said, and what happens next.",
-      src: "/system-design-card-image/Rectangle 47 (3).png",
+      src: "/system-design-card-image/crm-lead-management.jpg",
       tint: "from-amber-500/70 to-rose-800/70",
     },
     {
@@ -131,7 +131,7 @@ export const services = {
       title: "Automated",
       titleAccent: "Follow-Up:",
       body: "Connect activity to pipeline, identify the steps costing you opportunities, and improve the system using evidence—not assumptions.",
-      src: "/system-design-card-image/Rectangle 47 (4).png",
+      src: "/system-design-card-image/Rectangle 47 (4).jpg",
       tint: "from-zinc-500/70 to-zinc-900/70",
     },
     {
@@ -139,7 +139,7 @@ export const services = {
       title: "AI-Powered",
       titleAccent: "Sales Support:",
       body: "Connect activity to pipeline, identify the steps costing you opportunities, and improve the system using evidence—not assumptions.",
-      src: "/system-design-card-image/Rectangle 48.png",
+      src: "/system-design-card-image/Rectangle 48.jpg",
       tint: "from-orange-400/70 to-purple-900/70",
     },
   ] satisfies Service[],

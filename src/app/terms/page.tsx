@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { LegalPage } from "@/components/site/legal-page";
+import { LEGAL_UPDATED, termsAndConditions } from "@/content/legal";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
@@ -12,8 +13,9 @@ export default function TermsPage() {
     <LegalPage
       title="Terms &"
       titleAccent="Conditions."
-      updated="August 27, 2026"
-      intro="This page is a placeholder. Replace the copy below with the terms reviewed by your counsel before launch."
+      updated={LEGAL_UPDATED}
+      intro="These terms cover how you may use this website and what you can expect from us. Any project we take on is governed by its own written agreement, which sits alongside the terms below."
+      sections={termsAndConditions}
     />
   );
 }

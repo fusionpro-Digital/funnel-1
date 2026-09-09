@@ -31,6 +31,7 @@ export function Media({
         alt={alt}
         fill
         sizes={sizes}
+        quality={90}
         priority={priority}
         className={cn("object-cover", className)}
       />

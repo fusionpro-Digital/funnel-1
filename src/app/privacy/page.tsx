@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { LegalPage } from "@/components/site/legal-page";
+import { LEGAL_UPDATED, privacyPolicy } from "@/content/legal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -12,8 +13,9 @@ export default function PrivacyPage() {
     <LegalPage
       title="Privacy"
       titleAccent="Policy."
-      updated="August 27, 2026"
-      intro="This page is a placeholder. Replace the copy below with the policy reviewed by your counsel before launch."
+      updated={LEGAL_UPDATED}
+      intro="We keep this simple: we collect only what we need to answer your enquiry and deliver our work, we tell you exactly how it is used, and we never sell it. This policy explains the details."
+      sections={privacyPolicy}
     />
   );
 }

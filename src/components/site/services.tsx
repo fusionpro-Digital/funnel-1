@@ -37,7 +37,7 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
             src={service.src}
             alt={`${service.title} ${service.titleAccent}`.replace(/[&:]/g, "").trim()}
             tint={service.tint}
-            sizes="(max-width: 1024px) 40vw, 250px"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 40vw, 250px"
             className="transition-transform duration-500 ease-out group-hover:scale-[1.04]"
           />
         </div>
