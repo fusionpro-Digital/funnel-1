@@ -63,7 +63,7 @@ function ShieldCheck(props: React.SVGProps<SVGSVGElement>) {
 }
 
 const SERVICE_OPTIONS = [
-  "Positioning & Messaging",
+  "Logo & Branding",
   "Websites & Landing Pages",
   "Sales Funnels",
   "CRM & Lead Management",
@@ -213,9 +213,11 @@ export default function ContactPage() {
           },
         });
       }
-    } catch (err: any) {
+    } catch (err) {
       setIsSubmitting(false);
-      setErrorMessage(err.message || "An unexpected error occurred.");
+      setErrorMessage(
+        err instanceof Error ? err.message : "An unexpected error occurred.",
+      );
     }
   }
 
@@ -252,7 +254,7 @@ export default function ContactPage() {
       </header>
 
       {/* Main Content Area */}
-      <main className="relative z-10 py-12 sm:py-16 lg:py-20">
+      <main id="main" className="relative z-10 py-12 sm:py-16 lg:py-20">
         <Container className="max-w-[1240px]">
           {/* Top Title Banner */}
           <div className="text-center">

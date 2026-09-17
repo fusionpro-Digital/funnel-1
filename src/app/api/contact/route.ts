@@ -1,27 +1,87 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY || "re_WLScKgE8_5jwgjTAaE7UgPdwZuPziwYYV");
-
 const DEFAULT_RECIPIENTS = [
   "shahrairfardows@gmail.com",
   "christian@fusionprodigital.com",
 ];
 
+// Generous for a lead form, tight enough that nobody can mail a novel.
+const MAX_LENGTHS = {
+  fullName: 120,
+  email: 254,
+  phone: 40,
+  company: 200,
+  service: 120,
+  message: 4000,
+} as const;
+
+type Field = keyof typeof MAX_LENGTHS;
+
+function readField(body: Record<string, unknown>, name: Field) {
+  const value = body[name];
+  return typeof value === "string"
+    ? value.trim().slice(0, MAX_LENGTHS[name])
+    : "";
+}
+
+/** Everything the visitor typed lands inside an HTML email, so escape it. */
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function POST(request: NextRequest) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error(
+      "RESEND_API_KEY is not set, so the contact form cannot send email.",
+    );
+    return NextResponse.json(
+      {
+        error:
+          "The contact form is not available right now. Please email us directly.",
+      },
+      { status: 500 },
+    );
+  }
+
+  let body: Record<string, unknown>;
   try {
-    const body = await request.json();
-    const { fullName, email, phone, company, service, message } = body;
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+  }
 
-    // Basic validation
-    if (!fullName || !email || !phone) {
-      return NextResponse.json(
-        { error: "Name, email, and phone number are required." },
-        { status: 400 }
-      );
-    }
+  const fullName = readField(body, "fullName");
+  const email = readField(body, "email");
+  const phone = readField(body, "phone");
+  const company = readField(body, "company");
+  const service = readField(body, "service");
+  const message = readField(body, "message");
 
-    // Determine recipients
+  if (!fullName || !email || !phone) {
+    return NextResponse.json(
+      { error: "Name, email, and phone number are required." },
+      { status: 400 },
+    );
+  }
+  if (!EMAIL_PATTERN.test(email)) {
+    return NextResponse.json(
+      { error: "Please enter a valid email address." },
+      { status: 400 },
+    );
+  }
+
+  try {
+    const resend = new Resend(apiKey);
+
     const toEmails = process.env.CONTACT_RECIPIENT_EMAILS
       ? process.env.CONTACT_RECIPIENT_EMAILS.split(",").map((e) => e.trim())
       : DEFAULT_RECIPIENTS;
@@ -31,6 +91,15 @@ export async function POST(request: NextRequest) {
       "FusionPro Digital <contact@fusionprodigital.com>";
 
     const emailSubject = `🚀 New Lead Submission: ${fullName} (${service || "General Inquiry"})`;
+
+    const safe = {
+      fullName: escapeHtml(fullName),
+      email: escapeHtml(email),
+      phone: escapeHtml(phone),
+      company: escapeHtml(company) || "Not provided",
+      service: escapeHtml(service) || "Not specified",
+      message: escapeHtml(message) || "No detailed message provided.",
+    };
 
     const htmlContent = `
       <!DOCTYPE html>
@@ -59,33 +128,33 @@ export async function POST(request: NextRequest) {
 
             <div class="field-group">
               <div class="label">Full Name</div>
-              <div class="value">${fullName}</div>
+              <div class="value">${safe.fullName}</div>
             </div>
 
             <div class="field-group">
               <div class="label">Work Email</div>
-              <div class="value"><a href="mailto:${email}" style="color: #c084fc; text-decoration: none;">${email}</a></div>
+              <div class="value"><a href="mailto:${safe.email}" style="color: #c084fc; text-decoration: none;">${safe.email}</a></div>
             </div>
 
             <div class="field-group">
               <div class="label">Phone Number</div>
-              <div class="value"><a href="tel:${phone}" style="color: #c084fc; text-decoration: none;">${phone}</a></div>
+              <div class="value"><a href="tel:${safe.phone}" style="color: #c084fc; text-decoration: none;">${safe.phone}</a></div>
             </div>
 
             <div class="field-group">
               <div class="label">Company / Website</div>
-              <div class="value">${company || "Not provided"}</div>
+              <div class="value">${safe.company}</div>
             </div>
 
             <div class="field-group">
               <div class="label">Selected Service / Area</div>
-              <div class="value" style="color: #e9d5ff; font-weight: 600;">${service || "Not specified"}</div>
+              <div class="value" style="color: #e9d5ff; font-weight: 600;">${safe.service}</div>
             </div>
 
             <div class="field-group">
               <div class="label">Goals / Bottlenecks Message</div>
               <div class="message-box">
-                <div class="value" style="white-space: pre-wrap;">${message || "No detailed message provided."}</div>
+                <div class="value" style="white-space: pre-wrap;">${safe.message}</div>
               </div>
             </div>
 
@@ -107,7 +176,7 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.error("Resend API Error:", error);
-      // If custom domain fails, try sending via onboarding@resend.dev as fallback
+      // If the custom domain is not verified yet, fall back to Resend's shared sender.
       if (error.message && error.message.toLowerCase().includes("domain")) {
         const fallbackRes = await resend.emails.send({
           from: "FusionPro Digital Form <onboarding@resend.dev>",
@@ -123,17 +192,17 @@ export async function POST(request: NextRequest) {
       }
 
       return NextResponse.json(
-        { error: error.message || "Failed to send email via Resend API" },
-        { status: 500 }
+        { error: "We could not send your message. Please try again or email us directly." },
+        { status: 500 },
       );
     }
 
     return NextResponse.json({ success: true, data });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error in /api/contact route:", err);
     return NextResponse.json(
-      { error: err.message || "Internal server error" },
-      { status: 500 }
+      { error: "Something went wrong on our side. Please try again or email us directly." },
+      { status: 500 },
     );
   }
 }

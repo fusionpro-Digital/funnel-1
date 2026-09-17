@@ -5,9 +5,8 @@ import { cn } from "@/lib/utils";
 
 /**
  * Renders a real asset once one exists at `src`, and a tinted placeholder
- * until then. The Figma exports were flat images, so no source files came
- * with the design — drop the real assets into /public/media and fill in the
- * `src` fields in src/content/site.ts to swap them in.
+ * until then. See the Assets table in the README for which folder each
+ * slot reads from; the `src` fields live in src/content/site.ts.
  */
 export function Media({
   src,

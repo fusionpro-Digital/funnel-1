@@ -20,8 +20,8 @@ export const hero = {
 };
 
 /**
- * Portfolio thumbnails for the two marquee rows.
- * `src` points into /public/media - see public/media/README.md.
+ * Portfolio thumbnails for the gallery grid under the hero.
+ * `src` points into /public/slider-image.
  * While it is null a tinted placeholder tile is rendered instead.
  */
 export type GalleryItem = {
@@ -42,25 +42,111 @@ export const galleryItems: GalleryItem[] = [
   { id: "auto-parts", label: "Auto Parts Dubai", src: "/slider-image/Rectangle 44 (Colorized) (1).jpg", tint: "from-red-600 to-zinc-900" },
 ];
 
-export const galleryRowOne: GalleryItem[] = galleryItems;
-export const galleryRowTwo: GalleryItem[] = galleryItems;
-
 export const oneTeam = {
   headline: "One team behind every",
   headlineAccent: "critical part of your growth.",
   body: "Most providers improve one piece of your funnel and hand the rest back to you. FusionPro brings strategy, design, development, CRM, automation, and AI together then takes responsibility for how the complete system performs.",
-  logosLabel: "Companies And Platforms We’ve Worked With.",
+  logosLabel: "Tools & Platforms We Work With",
 };
 
-export type ClientLogo = { id: string; name: string; src: string | null };
+export type PlatformLogo = { id: string; name: string; src: string | null };
 
-export const clientLogos: ClientLogo[] = [
-  { id: "south-america-360", name: "South America 360°", src: "/brand-logo/div.framer-evpKx.png" },
-  { id: "tino", name: "Tino", src: "/brand-logo/div.framer-evpKx (1).png" },
-  { id: "zfood", name: "ZFood", src: "/brand-logo/div.framer-evpKx (2).png" },
-  { id: "allpoints", name: "AllPoints Construction, Inc.", src: "/brand-logo/div.framer-evpKx (3).png" },
-  { id: "plug-furniture", name: "Plug Furniture", src: "/brand-logo/div.framer-evpKx (4).png" },
+export const platformLogos: PlatformLogo[] = [
+  { id: "gohighlevel", name: "GoHighLevel", src: "/brand-logo/platforms/gohighlevel.svg" },
+  { id: "apollo", name: "Apollo", src: "/brand-logo/platforms/apollo.svg" },
+  { id: "canva", name: "Canva", src: "/brand-logo/platforms/canva.svg" },
+  { id: "clickup", name: "ClickUp", src: "/brand-logo/platforms/clickup.svg" },
+  { id: "google-workspace", name: "Google Workspace", src: "/brand-logo/platforms/google-workspace.svg" },
+  { id: "zapier", name: "Zapier", src: "/brand-logo/platforms/zapier.svg" },
+  { id: "make", name: "Make", src: "/brand-logo/platforms/make.png" },
+  { id: "n8n", name: "n8n", src: "/brand-logo/platforms/n8n.svg" },
+  { id: "calendly", name: "Calendly", src: "/brand-logo/platforms/calendly.svg" },
+  { id: "clay", name: "Clay", src: "/brand-logo/platforms/clay.png" },
+  { id: "smartlead", name: "Smartlead", src: "/brand-logo/platforms/smartlead.png" },
+  { id: "heyreach", name: "HeyReach", src: "/brand-logo/platforms/heyreach.svg" },
+  { id: "figma", name: "Figma", src: "/brand-logo/platforms/figma.svg" },
+  { id: "webflow", name: "Webflow", src: "/brand-logo/platforms/webflow.svg" },
+  { id: "framer", name: "Framer", src: "/brand-logo/platforms/framer.svg" },
+  { id: "wordpress", name: "WordPress", src: "/brand-logo/platforms/wordpress.svg" },
+  { id: "slack", name: "Slack", src: "/brand-logo/platforms/slack.svg" },
+  { id: "aws", name: "AWS", src: "/brand-logo/platforms/aws.svg" },
+  { id: "shopify", name: "Shopify", src: "/brand-logo/platforms/shopify.svg" },
 ];
+
+export type Stage = "Design" | "Capture" | "Convert" | "Automate";
+
+export type Solution = {
+  id: string;
+  number: string;
+  stages: Stage[];
+  title: string;
+  titleAccent: string;
+  body: string;
+  items: string[];
+};
+
+export const whatWeDo = {
+  eyebrow: "What we do",
+  headline: "Three solutions.",
+  headlineAccent: "One clear path to growth.",
+  body: "We design a presence buyers trust, capture the right leads, convert them into sales conversations, and automate the work in between, all under one accountable team.",
+  stages: ["Design", "Capture", "Convert", "Automate"] satisfies Stage[],
+  solutions: [
+    {
+      id: "design",
+      number: "01",
+      stages: ["Design"],
+      title: "Design &",
+      titleAccent: "Digital Presence",
+      body: "Interfaces and experiences that make your brand easier to understand and use, with professional, responsive websites built around your business goals.",
+      items: [
+        "UI/UX Design",
+        "Website Development",
+        "Landing Pages",
+        "Web Design",
+        "Branding & Visual Design",
+      ],
+    },
+    {
+      id: "lead-generation",
+      number: "02",
+      stages: ["Capture", "Convert"],
+      title: "Lead Generation &",
+      titleAccent: "Conversion",
+      body: "Prospecting, enrichment, and outbound systems, plus the funnels, lead capture, and booking flows that turn interest into qualified sales conversations.",
+      items: [
+        "Lead Generation",
+        "GTM Systems",
+        "Funnels",
+        "CRM",
+        "Appointment Booking",
+        "Email/LinkedIn Outreach",
+        "Lead Qualification",
+      ],
+    },
+    {
+      id: "automation",
+      number: "03",
+      stages: ["Automate"],
+      title: "Automation &",
+      titleAccent: "AI",
+      body: "AI agents and automated workflows that reduce repetitive work, from lead routing and follow-ups to the integrations that connect your tools.",
+      items: [
+        "AI Agents",
+        "n8n Automation",
+        "CRM Automation",
+        "Workflow Automation",
+        "API Integrations",
+        "AI Lead Qualification",
+        "Automated Follow-up",
+      ],
+    },
+  ] satisfies Solution[],
+  support: {
+    title: "Plus ongoing technical support:",
+    body: "website, CRM, automation, and integration support that keeps your system running.",
+  },
+};
 
 export const problems = {
   eyebrow: "Why growth becomes harder than it should",
@@ -86,6 +172,8 @@ export type Service = {
   body: string;
   src: string | null;
   tint: string;
+  /** Which part of the image stays visible when the 16:10 frame crops it. */
+  imagePosition?: string;
 };
 
 export const services = {
@@ -99,7 +187,7 @@ export const services = {
       title: "Logo &",
       titleAccent: "Branding:",
       body: "Clarify your market, positioning, and message so the people most likely to buy recognize themselves immediately.",
-      src: "/system-design-card-image/Rectangle 47.jpg",
+      src: "/service-cards/logo-branding.jpg",
       tint: "from-orange-500/70 to-violet-700/70",
     },
     {
@@ -107,7 +195,7 @@ export const services = {
       title: "Websites &",
       titleAccent: "Landing Pages:",
       body: "Build pages, offers, and experiences that answer the buyer’s real questions and give them a convincing reason to take the next step.",
-      src: "/system-design-card-image/Rectangle 47 (1).jpg",
+      src: "/service-cards/websites-landing-pages.jpg",
       tint: "from-sky-500/70 to-indigo-800/70",
     },
     {
@@ -115,38 +203,35 @@ export const services = {
       title: "Sales",
       titleAccent: "Funnels:",
       body: "Map the path from first interest to booked conversation, then remove the friction that quietly costs you opportunities.",
-      src: "/system-design-card-image/Rectangle 47 (2).jpg",
+      src: "/service-cards/sales-funnels.jpg",
       tint: "from-emerald-500/70 to-teal-900/70",
+      imagePosition: "object-top",
     },
     {
       id: "crm",
       title: "CRM &",
       titleAccent: "Lead Management:",
       body: "Give your sales team one clear view of who to contact, what was said, and what happens next.",
-      src: "/system-design-card-image/crm-lead-management.jpg",
+      src: "/service-cards/crm-lead-management.jpg",
       tint: "from-amber-500/70 to-rose-800/70",
     },
     {
       id: "follow-up",
       title: "Automated",
       titleAccent: "Follow-Up:",
-      body: "Connect activity to pipeline, identify the steps costing you opportunities, and improve the system using evidence—not assumptions.",
-      src: "/system-design-card-image/Rectangle 47 (4).jpg",
+      body: "Respond to every new inquiry in minutes, not days, with follow-up sequences that keep the conversation going until it is booked, closed, or clearly not a fit.",
+      src: "/service-cards/automated-follow-up.jpg",
       tint: "from-zinc-500/70 to-zinc-900/70",
     },
     {
       id: "ai",
       title: "AI-Powered",
       titleAccent: "Sales Support:",
-      body: "Connect activity to pipeline, identify the steps costing you opportunities, and improve the system using evidence—not assumptions.",
-      src: "/system-design-card-image/Rectangle 48.jpg",
+      body: "Put AI to work on research, personalization, and lead qualification, so your sales team spends its time on the conversations most likely to close.",
+      src: "/service-cards/ai-sales-support.jpg",
       tint: "from-orange-400/70 to-purple-900/70",
     },
   ] satisfies Service[],
-  wide: {
-    title: "Reporting & Optimization:",
-    body: "Understand which activities create opportunities and where performance can be improved.",
-  },
   statement: [
     "No disconnected contractors. No mystery technology stack. No finger-pointing between vendors.",
     "Just one system your team can understand, operate, and improve.",
@@ -154,20 +239,11 @@ export const services = {
   cta: "Talk About My Project",
 };
 
-export type VideoTestimonial = {
-  id: string;
-  quote: string;
-  poster: string | null;
-  videoSrc: string | null;
-  tint: string;
-};
-
-export const videoTestimonials = {
+export const testimonialsIntro = {
   eyebrow: "Verified client results",
   headline: "Results that show up in the pipeline",
   headlineAccent: "not just the portfolio.",
   body: "Good design matters, but it is not the finish line. We measure the outcomes that affect growth: qualified conversion rates, response time, booked conversations, sales velocity, pipeline visibility, and revenue opportunity.",
-  items: [] as VideoTestimonial[],
 };
 
 export type Testimonial = {
@@ -180,58 +256,18 @@ export type Testimonial = {
 
 export const testimonials: Testimonial[] = [
   {
-    id: "t1",
-    name: "Guillermo Rauch",
-    role: "CEO, Vercel",
-    avatar: null,
-    quote:
-      "FusionPro didn’t just redesign our website. They connected our messaging, lead capture, CRM, and follow-up into one clear system. For the first time, every part of our marketing feels like it’s working toward the same goal.",
-  },
-  {
-    id: "t2",
-    name: "Zeno Rocha",
-    role: "CEO, Resend",
-    avatar: null,
-    quote:
-      "Our old website looked fine, but it wasn’t producing enough serious inquiries. FusionPro helped us simplify the message, improve the customer journey, and give visitors a much clearer reason to contact us.",
-  },
-  {
-    id: "t3",
-    name: "Erik Torenberg",
-    role: "CEO, Monterey AI",
-    avatar: null,
-    quote:
-      "The follow-up system FusionPro built has made a noticeable difference. New inquiries receive the right response quickly, our team knows who owns each opportunity, and fewer promising leads are being overlooked.",
-  },
-  {
     id: "t4",
     name: "Sarah Chen",
     role: "Founder & CEO",
-    avatar: null,
+    avatar: "/testimonials/t4.svg",
     quote:
       "FusionPro made the entire experience easier for our customers. The new pages are cleaner, the information is easier to understand, and visitors can find what they need without getting lost or overwhelmed.",
   },
   {
-    id: "t5",
-    name: "Vlad Matsiiako",
-    role: "Co-founder, Infisical",
-    avatar: null,
-    quote:
-      "We knew our company delivered great work, but we struggled to explain what made us different. FusionPro gave us stronger positioning and messaging that finally sounds like us—and connects with the clients we actually want.",
-  },
-  {
-    id: "t6",
-    name: "Adam Carrigan",
-    role: "Co-founder, MindsDB",
-    avatar: null,
-    quote:
-      "We were tired of coordinating separate designers, developers, and marketing contractors. FusionPro brought everything together under one strategy. Having one team responsible for the complete system made the entire project easier.",
-  },
-  {
     id: "t7",
-    name: "Charly Poly",
-    role: "CEO, Defer",
-    avatar: null,
+    name: "Alex Scott",
+    role: "CEO",
+    avatar: "/testimonials/t7.svg",
     quote:
       "We wanted to use AI but didn’t want another collection of tools nobody would use. FusionPro found practical applications for research, personalization, and sales support, then built them into the way our team already works.",
   },
@@ -239,39 +275,31 @@ export const testimonials: Testimonial[] = [
     id: "t8",
     name: "Anthony",
     role: "Founder",
-    avatar: null,
+    avatar: "/testimonials/t8.svg",
     quote:
       "What impressed us most was that FusionPro could handle both the strategy and the implementation. They didn’t leave us with a presentation and a list of recommendations—they helped us build the actual solution.",
   },
   {
     id: "t9",
-    name: "Maayan Salom",
-    role: "Co-founder, Elementary",
-    avatar: null,
+    name: "Paul Marney",
+    role: "Co-founder",
+    avatar: "/testimonials/t9.svg",
     quote:
       "Before FusionPro, leads were sitting in different places and follow-up depended too much on memory. They organized the process, connected our CRM, and gave our sales team a much clearer way to manage opportunities.",
   },
   {
     id: "t10",
-    name: "Ashley Mulligan",
-    role: "Head of Product Engineering, Flatfile",
-    avatar: null,
+    name: "Kimberly Hill",
+    role: "Head of Product Engineering",
+    avatar: "/testimonials/t10.svg",
     quote:
       "FusionPro helped us understand where prospects were losing interest and rebuilt the journey around how our customers actually make decisions. The new funnel feels clearer, more focused, and much easier for our sales team to use.",
-  },
-  {
-    id: "t11",
-    name: "Mark Bao",
-    role: "Co-founder, Goody",
-    avatar: null,
-    quote:
-      "The way Mintlify’s docs were displayed just felt really user-friendly for us, and more importantly, for our developer customers. I felt like I had finally found a tool that could give us the Stripe-level documentation we wanted.",
   },
   {
     id: "t12",
     name: "Tony",
     role: "Co-founder, ProGolf",
-    avatar: null,
+    avatar: "/testimonials/t12.svg",
     quote:
       "The process felt organized from the beginning. FusionPro listened to our team, explained decisions clearly, and kept the project moving without making everything unnecessarily complicated.",
   },
